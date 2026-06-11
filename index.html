@@ -8,24 +8,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
-
-<!-- TOPBAR -->
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="topbar-left">
-      <span><i class="fa fa-map-marker-alt"></i> Jl. Raya Moga, Kab. Pemalang, Jawa Tengah</span>
-      <span><i class="fa fa-phone"></i> +62 812-XXXX-XXXX</span>
-    </div>
-    <div class="topbar-right">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-    </div>
-  </div>
-</div>
-
-<!-- NAVBAR -->
+<!-- TOPBAR & NAVBAR - Dimuat otomatis dari Firebase -->
+<div id="topbar-placeholder"></div>
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
@@ -36,43 +20,59 @@
       </div>
     </a>
     <ul class="nav-menu" id="navMenu">
-      <li><a href="index.html" class="active">Beranda</a></li>
-      <li class="has-dropdown">
-        <a href="tentang.html">Tentang <i class="fa fa-chevron-down"></i></a>
-        <ul class="dropdown">
-          <li><a href="tentang.html">Tentang Sekolah</a></li>
-          <li><a href="tentang.html#visi">Visi & Misi</a></li>
-          <li><a href="tentang.html#fasilitas">Fasilitas</a></li>
-        </ul>
-      </li>
-      <li><a href="berita.html">Berita</a></li>
-      <li class="has-dropdown">
-        <a href="prestasi.html">Aktivitas <i class="fa fa-chevron-down"></i></a>
-        <ul class="dropdown">
-          <li><a href="prestasi.html">Prestasi</a></li>
-          <li><a href="galeri.html">Galeri</a></li>
-          <li><a href="ekskul.html">Ekstrakurikuler</a></li>
-        </ul>
-      </li>
-      <li><a href="kontak.html">Kontak</a></li>
-      <li><a href="ppdb.html" class="nav-cta">PPDB 2025</a></li>
+      <li><a href="index.html"><i class="fa fa-spinner fa-spin"></i> Memuat...</a></li>
     </ul>
     <button class="hamburger" id="hamburger"><i class="fa fa-bars"></i></button>
   </div>
 </nav>
 
-<!-- HERO -->
+
+    <div class="topbar-right">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO SLIDER -->
 <section class="hero">
   <div class="hero-slides" id="heroSlides">
-    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=80')"><div class="hero-overlay"></div></div>
-    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&q=80')"><div class="hero-overlay"></div></div>
-    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1600&q=80')"><div class="hero-overlay"></div></div>
-  </div>
-  <div class="hero-text" id="heroText">
-    <span class="hero-tag" id="heroTag"></span>
-    <h1 id="heroTitle"><span id="typedTitle"></span><span class="hero-cursor" id="heroCursor">|</span></h1>
-    <p class="hero-desc" id="heroDesc"></p>
-    <div class="hero-btns" id="heroBtns"></div>
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=80')">
+      <div class="hero-overlay"></div>
+      <div class="hero-text">
+        <span class="hero-tag">Sekolah Islam Unggulan</span>
+        <h1>Muhammadiyah Boarding School Moga</h1>
+        <p>Membentuk generasi beriman, berilmu, dan berakhlak mulia untuk menghadapi tantangan global</p>
+        <div class="hero-btns">
+          <a href="tentang.html" class="btn-white">Tentang Kami</a>
+          <a href="ppdb.html" class="btn-outline-white">Daftar Sekarang</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&q=80')">
+      <div class="hero-overlay"></div>
+      <div class="hero-text">
+        <span class="hero-tag">Tahfidz Al-Quran</span>
+        <h1>Hafalan Quran Terstruktur & Intensif</h1>
+        <p>Target minimal 5 juz dengan bimbingan ustadz berpengalaman dan metode pembelajaran modern</p>
+        <div class="hero-btns">
+          <a href="tentang.html" class="btn-white">Selengkapnya</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1600&q=80')">
+      <div class="hero-overlay"></div>
+      <div class="hero-text">
+        <span class="hero-tag">Prestasi Gemilang</span>
+        <h1>50+ Prestasi Akademik & Non-Akademik</h1>
+        <p>Siswa MBS Moga terus menorehkan prestasi di tingkat kabupaten, provinsi, hingga nasional</p>
+        <div class="hero-btns">
+          <a href="prestasi.html" class="btn-white">Lihat Prestasi</a>
+        </div>
+      </div>
+    </div>
   </div>
   <button class="hero-prev" id="heroPrev"><i class="fa fa-chevron-left"></i></button>
   <button class="hero-next" id="heroNext"><i class="fa fa-chevron-right"></i></button>
@@ -80,18 +80,33 @@
   <div class="hero-scroll"><i class="fa fa-chevron-down"></i></div>
 </section>
 
-<!-- STATS -->
+<!-- STATS BAR -->
 <div class="statsbar">
   <div class="statsbar-inner">
-    <div class="stat-item fade-in"><i class="fa fa-users"></i><div><span class="stat-num" data-target="500">0</span><span>+</span><p>Siswa Aktif</p></div></div>
-    <div class="stat-item fade-in"><i class="fa fa-chalkboard-teacher"></i><div><span class="stat-num" data-target="40">0</span><span>+</span><p>Guru & Staff</p></div></div>
-    <div class="stat-item fade-in"><i class="fa fa-trophy"></i><div><span class="stat-num" data-target="50">0</span><span>+</span><p>Prestasi</p></div></div>
-    <div class="stat-item fade-in"><i class="fa fa-building"></i><div><span class="stat-num" data-target="10">0</span><span>+</span><p>Tahun Berdiri</p></div></div>
-    <div class="stat-item fade-in"><i class="fa fa-quran"></i><div><span class="stat-num" data-target="200">0</span><span>+</span><p>Alumni Hafidz</p></div></div>
+    <div class="stat-item fade-in">
+      <i class="fa fa-users"></i>
+      <div><span class="stat-num" data-target="500">0</span><span>+</span><p>Siswa Aktif</p></div>
+    </div>
+    <div class="stat-item fade-in">
+      <i class="fa fa-chalkboard-teacher"></i>
+      <div><span class="stat-num" data-target="40">0</span><span>+</span><p>Guru & Staff</p></div>
+    </div>
+    <div class="stat-item fade-in">
+      <i class="fa fa-trophy"></i>
+      <div><span class="stat-num" data-target="50">0</span><span>+</span><p>Prestasi</p></div>
+    </div>
+    <div class="stat-item fade-in">
+      <i class="fa fa-building"></i>
+      <div><span class="stat-num" data-target="10">0</span><span>+</span><p>Tahun Berdiri</p></div>
+    </div>
+    <div class="stat-item fade-in">
+      <i class="fa fa-quran"></i>
+      <div><span class="stat-num" data-target="200">0</span><span>+</span><p>Alumni Hafidz</p></div>
+    </div>
   </div>
 </div>
 
-<!-- TENTANG -->
+<!-- TENTANG SINGKAT -->
 <section class="section">
   <div class="container">
     <div class="about-wrap">
@@ -116,7 +131,7 @@
   </div>
 </section>
 
-<!-- PROGRAM -->
+<!-- PROGRAM UNGGULAN -->
 <section class="section section-gray">
   <div class="container">
     <div class="section-header fade-in">
@@ -125,17 +140,47 @@
       <p class="section-desc">Program pendidikan terpadu untuk mengembangkan potensi siswa secara menyeluruh</p>
     </div>
     <div class="program-grid">
-      <div class="program-card fade-in"><div class="pc-icon blue"><i class="fa fa-book-open"></i></div><h3>Tahfidz Al-Quran</h3><p>Program hafalan Al-Quran terstruktur dengan target minimal 5 juz.</p><a href="tentang.html" class="pc-link">Selengkapnya <i class="fa fa-arrow-right"></i></a></div>
-      <div class="program-card fade-in"><div class="pc-icon green"><i class="fa fa-flask"></i></div><h3>Sains & Teknologi</h3><p>Pembelajaran berbasis riset, praktikum, dan teknologi terkini.</p><a href="tentang.html" class="pc-link">Selengkapnya <i class="fa fa-arrow-right"></i></a></div>
-      <div class="program-card fade-in"><div class="pc-icon yellow"><i class="fa fa-language"></i></div><h3>Bahasa Internasional</h3><p>Bahasa Arab dan Inggris sebagai bahasa komunikasi sehari-hari.</p><a href="tentang.html" class="pc-link">Selengkapnya <i class="fa fa-arrow-right"></i></a></div>
-      <div class="program-card fade-in"><div class="pc-icon red"><i class="fa fa-futbol"></i></div><h3>Ekstrakurikuler</h3><p>Lebih dari 20 pilihan ekskul untuk mengembangkan bakat siswa.</p><a href="ekskul.html" class="pc-link">Selengkapnya <i class="fa fa-arrow-right"></i></a></div>
-      <div class="program-card fade-in"><div class="pc-icon purple"><i class="fa fa-users-cog"></i></div><h3>Kepemimpinan</h3><p>Pembentukan jiwa pemimpin melalui organisasi dan kegiatan sosial.</p><a href="tentang.html" class="pc-link">Selengkapnya <i class="fa fa-arrow-right"></i></a></div>
-      <div class="program-card fade-in"><div class="pc-icon orange"><i class="fa fa-home"></i></div><h3>Asrama Terpadu</h3><p>Fasilitas asrama nyaman dengan pembinaan karakter 24 jam.</p><a href="tentang.html" class="pc-link">Selengkapnya <i class="fa fa-arrow-right"></i></a></div>
+      <div class="program-card fade-in">
+        <div class="pc-icon blue"><i class="fa fa-book-open"></i></div>
+        <h3>Tahfidz Al-Quran</h3>
+        <p>Program hafalan Al-Quran terstruktur dengan target minimal 5 juz.</p>
+        <a href="tentang.html" class="pc-link">Selengkapnya <i class="fa fa-arrow-right"></i></a>
+      </div>
+      <div class="program-card fade-in">
+        <div class="pc-icon green"><i class="fa fa-flask"></i></div>
+        <h3>Sains & Teknologi</h3>
+        <p>Pembelajaran berbasis riset, praktikum, dan teknologi terkini.</p>
+        <a href="tentang.html" class="pc-link">Selengkapnya <i class="fa fa-arrow-right"></i></a>
+      </div>
+      <div class="program-card fade-in">
+        <div class="pc-icon yellow"><i class="fa fa-language"></i></div>
+        <h3>Bahasa Internasional</h3>
+        <p>Bahasa Arab dan Inggris sebagai bahasa komunikasi sehari-hari.</p>
+        <a href="tentang.html" class="pc-link">Selengkapnya <i class="fa fa-arrow-right"></i></a>
+      </div>
+      <div class="program-card fade-in">
+        <div class="pc-icon red"><i class="fa fa-futbol"></i></div>
+        <h3>Ekstrakurikuler</h3>
+        <p>Lebih dari 20 pilihan ekskul untuk mengembangkan bakat siswa.</p>
+        <a href="ekskul.html" class="pc-link">Selengkapnya <i class="fa fa-arrow-right"></i></a>
+      </div>
+      <div class="program-card fade-in">
+        <div class="pc-icon purple"><i class="fa fa-users-cog"></i></div>
+        <h3>Kepemimpinan</h3>
+        <p>Pembentukan jiwa pemimpin melalui organisasi dan kegiatan sosial.</p>
+        <a href="tentang.html" class="pc-link">Selengkapnya <i class="fa fa-arrow-right"></i></a>
+      </div>
+      <div class="program-card fade-in">
+        <div class="pc-icon orange"><i class="fa fa-home"></i></div>
+        <h3>Asrama Terpadu</h3>
+        <p>Fasilitas asrama nyaman dengan pembinaan karakter 24 jam.</p>
+        <a href="tentang.html" class="pc-link">Selengkapnya <i class="fa fa-arrow-right"></i></a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- BERITA -->
+<!-- BERITA TERBARU -->
 <section class="section">
   <div class="container">
     <div class="section-header fade-in">
@@ -143,15 +188,47 @@
       <h2 class="section-heading">Berita Terbaru</h2>
     </div>
     <div class="berita-grid">
-      <div class="berita-card fade-in"><div class="berita-img" style="background-image:url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80')"><span class="berita-cat">Pengumuman</span></div><div class="berita-body"><div class="berita-date"><i class="fa fa-calendar"></i> 05 Juni 2025</div><h4>Penerimaan Peserta Didik Baru 2025/2026</h4><p>Pendaftaran resmi dibuka mulai Juni hingga Agustus 2025. Kuota terbatas.</p><a href="berita.html" class="berita-link">Baca Selengkapnya <i class="fa fa-arrow-right"></i></a></div></div>
-      <div class="berita-card fade-in"><div class="berita-img" style="background-image:url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&q=80')"><span class="berita-cat">Prestasi</span></div><div class="berita-body"><div class="berita-date"><i class="fa fa-calendar"></i> 01 Juni 2025</div><h4>Juara 1 Olimpiade Sains Kabupaten Pemalang</h4><p>Siswa MBS Moga raih juara pertama bidang Matematika tingkat kabupaten.</p><a href="berita.html" class="berita-link">Baca Selengkapnya <i class="fa fa-arrow-right"></i></a></div></div>
-      <div class="berita-card fade-in"><div class="berita-img" style="background-image:url('https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&q=80')"><span class="berita-cat">Kegiatan</span></div><div class="berita-body"><div class="berita-date"><i class="fa fa-calendar"></i> 20 Mei 2025</div><h4>Wisuda Tahfidz Angkatan ke-7</h4><p>50 siswa berhasil menyelesaikan hafalan 30 juz Al-Quran.</p><a href="berita.html" class="berita-link">Baca Selengkapnya <i class="fa fa-arrow-right"></i></a></div></div>
+      <div class="berita-card fade-in">
+        <div class="berita-img" style="background-image:url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80')">
+          <span class="berita-cat">Pengumuman</span>
+        </div>
+        <div class="berita-body">
+          <div class="berita-date"><i class="fa fa-calendar"></i> 05 Juni 2025</div>
+          <h4>Penerimaan Peserta Didik Baru 2025/2026</h4>
+          <p>Pendaftaran resmi dibuka mulai Juni hingga Agustus 2025. Kuota terbatas.</p>
+          <a href="berita.html" class="berita-link">Baca Selengkapnya <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="berita-card fade-in">
+        <div class="berita-img" style="background-image:url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&q=80')">
+          <span class="berita-cat">Prestasi</span>
+        </div>
+        <div class="berita-body">
+          <div class="berita-date"><i class="fa fa-calendar"></i> 01 Juni 2025</div>
+          <h4>Juara 1 Olimpiade Sains Kabupaten Pemalang</h4>
+          <p>Siswa MBS Moga raih juara pertama bidang Matematika tingkat kabupaten.</p>
+          <a href="berita.html" class="berita-link">Baca Selengkapnya <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="berita-card fade-in">
+        <div class="berita-img" style="background-image:url('https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&q=80')">
+          <span class="berita-cat">Kegiatan</span>
+        </div>
+        <div class="berita-body">
+          <div class="berita-date"><i class="fa fa-calendar"></i> 20 Mei 2025</div>
+          <h4>Wisuda Tahfidz Angkatan ke-7</h4>
+          <p>50 siswa berhasil menyelesaikan hafalan 30 juz Al-Quran.</p>
+          <a href="berita.html" class="berita-link">Baca Selengkapnya <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
     </div>
-    <div class="text-center fade-in" style="margin-top:2rem"><a href="berita.html" class="btn-blue-outline">Lihat Semua Berita <i class="fa fa-arrow-right"></i></a></div>
+    <div class="text-center fade-in" style="margin-top:2rem">
+      <a href="berita.html" class="btn-blue-outline">Lihat Semua Berita <i class="fa fa-arrow-right"></i></a>
+    </div>
   </div>
 </section>
 
-<!-- PRESTASI -->
+<!-- PRESTASI HIGHLIGHT -->
 <section class="section section-gray">
   <div class="container">
     <div class="section-header fade-in">
@@ -159,16 +236,46 @@
       <h2 class="section-heading">Prestasi Terkini</h2>
     </div>
     <div class="prestasi-grid">
-      <div class="prestasi-card fade-in gold"><div class="prestasi-medal"><i class="fa fa-medal"></i></div><div class="prestasi-info"><span class="prestasi-level">Kabupaten</span><h4>Juara 1 Olimpiade Matematika</h4><p>Kabupaten Pemalang 2025</p></div></div>
-      <div class="prestasi-card fade-in gold"><div class="prestasi-medal"><i class="fa fa-medal"></i></div><div class="prestasi-info"><span class="prestasi-level">Provinsi</span><h4>Juara 2 Lomba Pidato Bahasa Arab</h4><p>Jawa Tengah 2024</p></div></div>
-      <div class="prestasi-card fade-in silver"><div class="prestasi-medal"><i class="fa fa-medal"></i></div><div class="prestasi-info"><span class="prestasi-level">Nasional</span><h4>Finalis Kompetisi Sains Madrasah</h4><p>Tingkat Nasional 2024</p></div></div>
-      <div class="prestasi-card fade-in gold"><div class="prestasi-medal"><i class="fa fa-medal"></i></div><div class="prestasi-info"><span class="prestasi-level">Kabupaten</span><h4>Juara 1 MTQ Tingkat Kabupaten</h4><p>Kabupaten Pemalang 2025</p></div></div>
+      <div class="prestasi-card fade-in gold">
+        <div class="prestasi-medal"><i class="fa fa-medal"></i></div>
+        <div class="prestasi-info">
+          <span class="prestasi-level">Kabupaten</span>
+          <h4>Juara 1 Olimpiade Matematika</h4>
+          <p>Kabupaten Pemalang 2025</p>
+        </div>
+      </div>
+      <div class="prestasi-card fade-in gold">
+        <div class="prestasi-medal"><i class="fa fa-medal"></i></div>
+        <div class="prestasi-info">
+          <span class="prestasi-level">Provinsi</span>
+          <h4>Juara 2 Lomba Pidato Bahasa Arab</h4>
+          <p>Jawa Tengah 2024</p>
+        </div>
+      </div>
+      <div class="prestasi-card fade-in silver">
+        <div class="prestasi-medal"><i class="fa fa-medal"></i></div>
+        <div class="prestasi-info">
+          <span class="prestasi-level">Nasional</span>
+          <h4>Finalis Kompetisi Sains Madrasah</h4>
+          <p>Tingkat Nasional 2024</p>
+        </div>
+      </div>
+      <div class="prestasi-card fade-in gold">
+        <div class="prestasi-medal"><i class="fa fa-medal"></i></div>
+        <div class="prestasi-info">
+          <span class="prestasi-level">Kabupaten</span>
+          <h4>Juara 1 MTQ Tingkat Kabupaten</h4>
+          <p>Kabupaten Pemalang 2025</p>
+        </div>
+      </div>
     </div>
-    <div class="text-center fade-in" style="margin-top:2rem"><a href="prestasi.html" class="btn-blue-outline">Lihat Semua Prestasi <i class="fa fa-arrow-right"></i></a></div>
+    <div class="text-center fade-in" style="margin-top:2rem">
+      <a href="prestasi.html" class="btn-blue-outline">Lihat Semua Prestasi <i class="fa fa-arrow-right"></i></a>
+    </div>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- CTA PPDB -->
 <section class="cta-section">
   <div class="cta-overlay"></div>
   <div class="cta-content fade-in">
@@ -188,20 +295,65 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <div class="footer-logo"><div class="logo-circle small">MBS</div><div><span>MBS Moga</span><small>Muhammadiyah Boarding School</small></div></div>
+          <div class="footer-logo">
+            <div class="logo-circle small">MBS</div>
+            <div><span>MBS Moga</span><small>Muhammadiyah Boarding School</small></div>
+          </div>
           <p>Sekolah Islam berasrama yang mengintegrasikan pendidikan umum dan agama untuk membentuk generasi unggul.</p>
-          <div class="footer-sosmed"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+          <div class="footer-sosmed">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
         </div>
-        <div class="footer-col"><h4>Menu Utama</h4><ul><li><a href="index.html">Beranda</a></li><li><a href="tentang.html">Tentang Sekolah</a></li><li><a href="berita.html">Berita</a></li><li><a href="prestasi.html">Prestasi</a></li><li><a href="galeri.html">Galeri</a></li><li><a href="kontak.html">Kontak</a></li></ul></div>
-        <div class="footer-col"><h4>Program</h4><ul><li><a href="tentang.html">Tahfidz Al-Quran</a></li><li><a href="tentang.html">Sains & Teknologi</a></li><li><a href="tentang.html">Bahasa Internasional</a></li><li><a href="ekskul.html">Ekstrakurikuler</a></li><li><a href="tentang.html">Asrama Terpadu</a></li><li><a href="ppdb.html">PPDB 2025</a></li></ul></div>
-        <div class="footer-col"><h4>Kontak Kami</h4><div class="footer-contact"><p><i class="fa fa-map-marker-alt"></i> Jl. Raya Moga, Kec. Moga, Kab. Pemalang, Jawa Tengah</p><p><i class="fa fa-phone"></i> +62 812-XXXX-XXXX</p><p><i class="fa fa-envelope"></i> info@mbsmoga.sch.id</p><p><i class="fa fa-clock"></i> Senin–Jumat: 07.00–16.00</p></div></div>
+        <div class="footer-col">
+          <h4>Menu Utama</h4>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="tentang.html">Tentang Sekolah</a></li>
+            <li><a href="berita.html">Berita</a></li>
+            <li><a href="prestasi.html">Prestasi</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Program</h4>
+          <ul>
+            <li><a href="tentang.html">Tahfidz Al-Quran</a></li>
+            <li><a href="tentang.html">Sains & Teknologi</a></li>
+            <li><a href="tentang.html">Bahasa Internasional</a></li>
+            <li><a href="ekskul.html">Ekstrakurikuler</a></li>
+            <li><a href="tentang.html">Asrama Terpadu</a></li>
+            <li><a href="ppdb.html">PPDB 2025</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kontak Kami</h4>
+          <div class="footer-contact">
+            <p><i class="fa fa-map-marker-alt"></i> Jl. Raya Moga, Kec. Moga, Kab. Pemalang, Jawa Tengah</p>
+            <p><i class="fa fa-phone"></i> +62 812-XXXX-XXXX</p>
+            <p><i class="fa fa-envelope"></i> info@mbsmoga.sch.id</p>
+            <p><i class="fa fa-clock"></i> Senin–Jumat: 07.00–16.00</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="footer-bottom"><div class="container"><p>© 2025 Muhammadiyah Boarding School Moga. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Kebijakan Privasi</a><a href="#">Syarat & Ketentuan</a></div></div></div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2025 Muhammadiyah Boarding School Moga. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Kebijakan Privasi</a>
+        <a href="#">Syarat & Ketentuan</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <div class="back-to-top" id="backToTop"><i class="fa fa-chevron-up"></i></div>
 <script src="js/script.js"></script>
+  <script type="module" src="js/navbar.js"></script>
 </body>
 </html>
