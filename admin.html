@@ -161,6 +161,7 @@
       <a onclick="showPage('berita')" id="menu-berita"><i class="fa fa-newspaper"></i> Berita</a>
       <a onclick="showPage('prestasi')" id="menu-prestasi"><i class="fa fa-trophy"></i> Prestasi</a>
       <a onclick="showPage('galeri')" id="menu-galeri"><i class="fa fa-images"></i> Galeri</a>
+      <a onclick="showPage('slide')" id="menu-slide"><i class="fa fa-film"></i> Hero Slide</a>
       <div class="mlabel">Tampilan</div>
       <a onclick="showPage('navbar')" id="menu-navbar"><i class="fa fa-bars"></i> Kelola Navbar</a>
       <div class="mlabel">Pengaturan</div>
@@ -235,6 +236,25 @@
           <p style="font-size:13px;color:#6b7280;margin-bottom:1.5rem">Kelola menu navigasi website. Perubahan langsung tampil di website tanpa perlu push ke GitHub.</p>
           <div class="menu-builder" id="menuBuilder">
             <div style="text-align:center;color:#6b7280;padding:2rem">Memuat menu...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- SLIDE -->
+    <div class="page" id="page-slide">
+      <div class="card">
+        <div class="card-header">
+          <h3>🎬 Kelola Hero Slide</h3>
+          <button class="btn btn-primary" onclick="openModal('slide')"><i class="fa fa-plus"></i> Tambah Slide</button>
+        </div>
+        <div class="card-body">
+          <p style="font-size:13px;color:#6b7280;margin-bottom:1.5rem">
+            Kelola gambar dan teks yang tampil di hero slider beranda. Perubahan langsung tampil di website.
+          </p>
+          <div class="slide-cards-grid" id="slideGrid">
+            <div style="text-align:center;color:#6b7280;grid-column:span 3;padding:2rem">Memuat data slide...</div>
           </div>
         </div>
       </div>
@@ -408,6 +428,41 @@
   </div>
 </div>
 
+
+<!-- MODAL SLIDE -->
+<div class="modal-overlay" id="modal-slide">
+  <div class="modal">
+    <div class="modal-header"><h3 id="ms-title">Tambah Slide</h3><button class="modal-close" onclick="closeModal('slide')">&times;</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="sl-id"/>
+      <div class="form-grid">
+        <div class="fga full">
+          <label>Gambar Slide</label>
+          <div class="upload-area">
+            <input type="file" accept="image/*" onchange="handleUpload(this,'slide')"/>
+            <div class="u-icon"><i class="fa fa-cloud-upload-alt"></i></div>
+            <p>Klik untuk upload foto atau isi URL di bawah</p>
+            <img class="upload-preview" id="prev-slide"/>
+            <div class="upload-progress" id="prog-slide"><div class="upload-progress-bar" id="progbar-slide"></div></div>
+          </div>
+          <input type="text" id="sl-img" placeholder="Atau masukkan URL foto langsung..." style="margin-top:.75rem;width:100%;padding:10px 14px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;outline:none" oninput="document.getElementById('prev-slide').src=this.value;document.getElementById('prev-slide').style.display=this.value?'block':'none'"/>
+        </div>
+        <div class="fga full"><label>Tag / Badge</label><input type="text" id="sl-tag" placeholder="contoh: 🌟 Sekolah Islam Unggulan"/></div>
+        <div class="fga full"><label>Judul (akan diketik)</label><input type="text" id="sl-title" placeholder="Judul yang akan muncul dengan efek typing..."/></div>
+        <div class="fga full"><label>Deskripsi</label><textarea id="sl-desc" rows="2" placeholder="Deskripsi singkat..."></textarea></div>
+        <div class="fga"><label>Tombol 1 - Label</label><input type="text" id="sl-btn1l" placeholder="contoh: Tentang Kami"/></div>
+        <div class="fga"><label>Tombol 1 - Link</label><input type="text" id="sl-btn1h" placeholder="contoh: tentang.html"/></div>
+        <div class="fga"><label>Tombol 2 - Label (opsional)</label><input type="text" id="sl-btn2l" placeholder="contoh: Daftar Sekarang"/></div>
+        <div class="fga"><label>Tombol 2 - Link (opsional)</label><input type="text" id="sl-btn2h" placeholder="contoh: ppdb.html"/></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('slide')" style="background:#f1f5f9">Batal</button>
+      <button class="btn btn-primary" onclick="saveSlide()"><i class="fa fa-save"></i> Simpan</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script type="module">
@@ -461,9 +516,10 @@ function showPage(n) {
   document.querySelectorAll('.sb-menu a').forEach(a => a.classList.remove('active'));
   document.getElementById('page-' + n).classList.add('active');
   document.getElementById('menu-' + n).classList.add('active');
-  const t = { dashboard:'Dashboard', berita:'Kelola Berita', prestasi:'Kelola Prestasi', galeri:'Kelola Galeri', navbar:'Kelola Navbar', profil:'Profil Sekolah', pengaturan:'Pengaturan' };
+  const t = { dashboard:'Dashboard', berita:'Kelola Berita', prestasi:'Kelola Prestasi', galeri:'Kelola Galeri', slide:'Hero Slide', navbar:'Kelola Navbar', profil:'Profil Sekolah', pengaturan:'Pengaturan' };
   document.getElementById('pageTitle').textContent = t[n];
   if (n === 'profil') loadProfil();
+  if (n === 'slide') loadSlides();
   if (n === 'pengaturan') loadConfig();
   if (n === 'navbar') loadNavbarMenu();
 }
@@ -478,7 +534,7 @@ function toast(msg, type='success') {
 }
 
 // MODAL
-function openModal(type, data=null) {
+function _openModal(type, data=null) {
   if (type === 'berita') {
     document.getElementById('b-id').value = data?.id || '';
     document.getElementById('mb-title').textContent = data ? 'Edit Berita' : 'Tambah Berita';
@@ -544,6 +600,7 @@ async function handleUpload(input, type) {
     pb.style.width = '100%';
     if (d.secure_url) {
       if (type === 'berita') document.getElementById('b-foto').value = d.secure_url;
+      if (type === 'slide') { document.getElementById('sl-img').value = d.secure_url; }
       if (type === 'galeri') document.getElementById('g-url').value = d.secure_url;
       pv.src = d.secure_url; toast('Foto berhasil diupload!');
     } else { toast('Upload gagal!', 'error'); }
@@ -554,7 +611,7 @@ window.handleUpload = handleUpload;
 
 // INIT
 window.initAdmin = function() { if (localStorage.getItem(AKEY)) loadAll(); }
-async function loadAll() { await loadBerita(); await loadPrestasi(); await loadGaleri(); await loadNavbarMenu(); }
+async function loadAll() { await loadBerita(); await loadPrestasi(); await loadGaleri(); await loadNavbarMenu(); loadSlides(); }
 
 // BERITA
 let beritaData = [];
@@ -820,6 +877,109 @@ window.saveAkun = function() {
   document.getElementById('adminName').textContent = u;
   toast('Akun diperbarui!');
 }
+
+// ===== SLIDE MANAGEMENT =====
+const DEFAULT_SLIDES = [
+  { id:'s1', img:'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=80', tag:'🌟 Sekolah Islam Unggulan', title:'Muhammadiyah Boarding School Moga', desc:'Membentuk generasi beriman, berilmu, dan berakhlak mulia', btn1Label:'Tentang Kami', btn1Href:'tentang.html', btn2Label:'Daftar Sekarang', btn2Href:'ppdb.html' },
+  { id:'s2', img:'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&q=80', tag:'📖 Tahfidz Al-Quran', title:'Hafalan Quran Terstruktur & Intensif', desc:'Target minimal 5 juz dengan bimbingan ustadz berpengalaman', btn1Label:'Selengkapnya', btn1Href:'tentang.html', btn2Label:'', btn2Href:'' },
+  { id:'s3', img:'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1600&q=80', tag:'🏆 Prestasi Gemilang', title:'50+ Prestasi Akademik & Non-Akademik', desc:'Juara di tingkat kabupaten, provinsi, hingga nasional', btn1Label:'Lihat Prestasi', btn1Href:'prestasi.html', btn2Label:'', btn2Href:'' },
+];
+
+function getSlidesData() {
+  try {
+    const saved = localStorage.getItem('mbs_slides');
+    if (saved) { const p = JSON.parse(saved); if (p && p.length > 0) return p; }
+  } catch(e) {}
+  return [...DEFAULT_SLIDES];
+}
+
+function saveSlidesData(slides) {
+  localStorage.setItem('mbs_slides', JSON.stringify(slides));
+}
+
+function loadSlides() {
+  const slides = getSlidesData();
+  renderSlideGrid(slides);
+}
+
+function renderSlideGrid(slides) {
+  const grid = document.getElementById('slideGrid');
+  if (!slides.length) {
+    grid.innerHTML = '<div style="text-align:center;color:#6b7280;grid-column:span 3;padding:2rem">Belum ada slide</div>';
+    return;
+  }
+  grid.innerHTML = slides.map((s, i) => `
+    <div class="slide-card">
+      <div class="slide-card-img" style="background-image:url('${s.img}')">
+        <span class="slide-card-badge">Slide ${i + 1}</span>
+      </div>
+      <div class="slide-card-body">
+        <h4>${s.title || '—'}</h4>
+        <p>${s.desc || '—'}</p>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-warning btn-sm" onclick='openModal("slide",${JSON.stringify(s).replace(/'/g,"&#39;")})'><i class="fa fa-edit"></i> Edit</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteSlide('${s.id}')"><i class="fa fa-trash"></i> Hapus</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+window.openModal = function(type, data=null) {
+  if (type === 'slide') {
+    const id = data?.id || 'sl_' + Date.now();
+    document.getElementById('sl-id').value = id;
+    document.getElementById('ms-title').textContent = data ? 'Edit Slide' : 'Tambah Slide';
+    document.getElementById('sl-img').value = data?.img || '';
+    document.getElementById('sl-tag').value = data?.tag || '';
+    document.getElementById('sl-title').value = data?.title || '';
+    document.getElementById('sl-desc').value = data?.desc || '';
+    document.getElementById('sl-btn1l').value = data?.btn1Label || '';
+    document.getElementById('sl-btn1h').value = data?.btn1Href || '';
+    document.getElementById('sl-btn2l').value = data?.btn2Label || '';
+    document.getElementById('sl-btn2h').value = data?.btn2Href || '';
+    const pv = document.getElementById('prev-slide');
+    if (data?.img) { pv.src = data.img; pv.style.display = 'block'; } else { pv.style.display = 'none'; }
+    document.getElementById('modal-slide').classList.add('open');
+    return;
+  }
+  // Existing modal handler
+  _openModal(type, data);
+}
+
+window.saveSlide = function() {
+  const id = document.getElementById('sl-id').value;
+  const img = document.getElementById('sl-img').value;
+  if (!img) { toast('URL/foto tidak boleh kosong!', 'error'); return; }
+  const newSlide = {
+    id: id,
+    img: img,
+    tag: document.getElementById('sl-tag').value,
+    title: document.getElementById('sl-title').value,
+    desc: document.getElementById('sl-desc').value,
+    btn1Label: document.getElementById('sl-btn1l').value,
+    btn1Href: document.getElementById('sl-btn1h').value,
+    btn2Label: document.getElementById('sl-btn2l').value,
+    btn2Href: document.getElementById('sl-btn2h').value,
+  };
+  const slides = getSlidesData();
+  const idx = slides.findIndex(s => s.id === id);
+  if (idx >= 0) { slides[idx] = newSlide; } else { slides.push(newSlide); }
+  saveSlidesData(slides);
+  renderSlideGrid(slides);
+  closeModal('slide');
+  toast('Slide berhasil disimpan! Refresh website untuk melihat perubahan.');
+}
+
+window.deleteSlide = function(id) {
+  if (!confirm('Hapus slide ini?')) return;
+  const slides = getSlidesData().filter(s => s.id !== id);
+  if (slides.length === 0) { toast('Minimal harus ada 1 slide!', 'error'); return; }
+  saveSlidesData(slides);
+  renderSlideGrid(slides);
+  toast('Slide dihapus!');
+}
+
 </script>
 </body>
 </html>
