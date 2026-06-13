@@ -480,7 +480,7 @@
   const db = getFirestore(app);
   window.db = db;
   window.FS = { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, setDoc, getDoc };
-  window.initAdmin();
+  window.addEventListener('load', () => { if (typeof window.initAdmin === 'function') window.initAdmin(); });
 </script>
 
 <script>
@@ -577,7 +577,7 @@ function _openModal(type, data=null) {
   document.getElementById('modal-' + type).classList.add('open');
 }
 function closeModal(type) { document.getElementById('modal-' + type).classList.remove('open'); }
-window.openModal = openModal;
+window.openModal = _openModal;
 window.closeModal = closeModal;
 
 // UPLOAD
